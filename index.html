@@ -8,6 +8,8 @@
 
 	<h1 class="my-element">My Element</h1>
 
+	<button id="toggle-class">Toggle Class</button>
+
 	<script src="dist/library.min.js"></script>
 
 	<script>
@@ -21,9 +23,26 @@
 
 		setTimeout(function ()
 		{
-			element.show();
+			element.show().addClass('test');
+
+			console.log(element.hasClass('test'));
 
 		}, 2000);
+
+		setTimeout(function ()
+		{
+			element.removeClass('test');
+
+			console.log(element.hasClass('test'));
+
+		}, 4000);
+
+		var button = document.getElementById('toggle-class');
+
+		button.addEventListener('click', function (event)
+		{
+			element.toggleClass('one');
+		});
 	</script>
 </body>
 </html>

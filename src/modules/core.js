@@ -5,8 +5,6 @@ function _ (el)
 	return new Library(el);
 }
 
-/*----------  Our librarys main constructor  ----------*/
-
 function Library (el)
 {	
 	var selector = document.querySelectorAll(el);
@@ -23,7 +21,9 @@ function Library (el)
 
 Library.prototype = 
 {
-	version : '1.0'
+	version : '1.0',
+	author  : 'Ryan Knights',
+	url     : 'http://ryanknights.co.uk'
 }
 
 export { _, Library }

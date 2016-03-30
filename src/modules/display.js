@@ -1,28 +1,20 @@
 "use strict";
 
-const display =
+const displayMethods =
 {
 	hide ()
-	{
-		let len = this.el.length;
-
-		while (len--)
-		{
-			this.el[len].style.display = 'none';
-		}
+	{	
+		this.el.forEach(el => el.style.display = 'none');
 
 		return this;
 	},
 
 	show ()
 	{
-		let len = this.el.length;
+		this.el.forEach(el => el.style.display = 'block');
 
-		while (len--)
-		{
-			this.el[len].style.display = 'block';
-		}
+		return this;
 	}
 }
 
-export { display };
+export { displayMethods };
