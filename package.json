@@ -1,0 +1,22 @@
+{
+  "name": "js-library",
+  "version": "1.0.0",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.7.4",
+    "babel-plugin-object-assign": "^1.2.1",
+    "babelify": "^6.4.0",
+    "browserify": "^13.0.0",
+    "gulp": "^3.9.1",
+    "gulp-banner": "^0.1.3",
+    "gulp-browserify": "^0.5.1",
+    "gulp-jshint": "^2.0.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.3",
+    "gulp-watch": "^4.3.5",
+    "jshint": "^2.9.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
