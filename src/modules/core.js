@@ -23,7 +23,17 @@ Library.prototype =
 {
 	version : '1.0',
 	author  : 'Ryan Knights',
-	url     : 'http://ryanknights.co.uk'
+	url     : 'http://ryanknights.co.uk',
+
+	each (fn)
+	{
+		for (let i = 0, l = this.el.length; i < l; i++)
+		{
+			fn.call(this, this.el[i], i);
+		}
+
+		return this;
+	}
 }
 
 export { _, Library }

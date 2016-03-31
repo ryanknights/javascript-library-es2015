@@ -4,7 +4,7 @@ const classMethods =
 {
 	addClass (className)
 	{
-		this.el.forEach((el) =>
+		this.each((el) =>
 		{
 			if (el.classList)
 			{
@@ -21,7 +21,7 @@ const classMethods =
 
 	removeClass (className)
 	{	
-		this.el.forEach((el) =>
+		this.each((el) =>
 		{
 			if (el.classList)
 			{

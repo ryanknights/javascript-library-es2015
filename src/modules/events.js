@@ -4,7 +4,7 @@ const eventMethods =
 {
 	on (eventName, fn)
 	{	
-		this.el.forEach((el) =>
+		this.each((el) =>
 		{
 			if (el.addEventListener)
 			{
@@ -24,7 +24,7 @@ const eventMethods =
 
 	off (eventName, fn)
 	{
-		this.el.forEach((el) =>
+		this.each((el) =>
 		{
 			if (el.removeEventListener)
 			{
