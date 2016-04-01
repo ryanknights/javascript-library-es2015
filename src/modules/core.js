@@ -5,25 +5,23 @@ function _ (el)
 	return new Library(el);
 }
 
-function Library (el)
+class Library
 {	
-	var selector = document.querySelectorAll(el);
-
-	this.el = [];
-
-	for (var i = 0, l = selector.length; i < l; i++)
+	constructor (el)
 	{
-		this.el.push(selector[i]);
+		const selector = document.querySelectorAll(el);
+
+		this.el = [];
+
+		for (let i = 0, l = selector.length; i < l; i++)
+		{
+			this.el.push(selector[i]);
+		}
 	}
 
-	return this;
-}
-
-Library.prototype = 
-{
-	version : '1.0',
-	author  : 'Ryan Knights',
-	url     : 'http://ryanknights.co.uk',
+	version : 1.0
+	author  : 'Ryan Knights'
+	url     : 'http://ryanknights.co.uk'
 
 	each (fn)
 	{
