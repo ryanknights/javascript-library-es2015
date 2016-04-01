@@ -1,22 +1,10 @@
 "use strict";
 
-function _ (el)
-{
-	return new Library(el);
-}
-
 class Library
 {	
-	constructor (el)
+	constructor (selector)
 	{
-		const selector = document.querySelectorAll(el);
-
-		this.el = [];
-
-		for (let i = 0, l = selector.length; i < l; i++)
-		{
-			this.el.push(selector[i]);
-		}
+		this.el = Array.from(document.querySelectorAll(selector));
 	}
 
 	version : 1.0
@@ -24,14 +12,16 @@ class Library
 	url     : 'http://ryanknights.co.uk'
 
 	each (fn)
-	{
-		for (let i = 0, l = this.el.length; i < l; i++)
-		{
-			fn.call(this, this.el[i], i);
-		}
+	{	
+		this.el.forEach(fn, this);
 
 		return this;
 	}
+}
+
+function _ (el)
+{
+	return new Library(el);
 }
 
 export { _, Library }
