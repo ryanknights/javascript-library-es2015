@@ -8,6 +8,7 @@ import {displayMethods} from "./modules/display.js";
 import {classMethods} from "./modules/class.js";
 import {eventMethods} from "./modules/events.js";
 import {manipulationMethods} from "./modules/manipulation.js";
+import {ajaxMethods} from "./modules/ajax.js";
 
 /*----------  Extend our librarys prototype with above modules  ----------*/
 Object.assign(Library.prototype, 
@@ -17,17 +18,12 @@ Object.assign(Library.prototype,
 	manipulationMethods
 );
 
-const staticMethods =
-{
-	alert (string)
-	{
-		alert(string);
-	}
-}
+/*----------  Extend some static methods to our library  ----------*/
+Object.assign(_, 
+	ajaxMethods
+);
 
-Object.assign(_, staticMethods);
-
-/*----------  Assign our library call function onto the window  ----------*/
+/*----------  Assign our library to the window  ----------*/
 if (window._ === undefined)
 {
 	window._ = _;

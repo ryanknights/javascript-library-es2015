@@ -18,41 +18,50 @@
 		var element = _('.my-element'),
 			button  = _('#toggle-class');
 
-		setTimeout(function ()
-		{
-			element.hide();
+		// setTimeout(function ()
+		// {
+		// 	element.hide();
 
-		}, 1000);
+		// }, 1000);
 
-		setTimeout(function ()
-		{
-			element.show().addClass('test');
+		// setTimeout(function ()
+		// {
+		// 	element.show().addClass('test');
 
-			console.log(element.hasClass('test'));
+		// 	console.log(element.hasClass('test'));
 
-		}, 2000);
+		// }, 2000);
 
-		setTimeout(function ()
-		{
-			element.removeClass('test').after('<h1>After</h1>');
+		// setTimeout(function ()
+		// {
+		// 	element.removeClass('test').after('<h1>After</h1>');
 
-			element
-				.append(document.getElementById('move-me'))
-				.before('<h1>Before</h1>')
-				.prepend(document.getElementById('move-me'));
+		// 	element
+		// 		.append(document.getElementById('move-me'))
+		// 		.before('<h1>Before</h1>')
+		// 		.prepend(document.getElementById('move-me'));
 
-			console.log(element.hasClass('test'));
+		// 	console.log(element.hasClass('test'));
 
-		}, 4000);
+		// }, 4000);
 
-		button.on('click', onButtonClick);
+		// button.on('click', onButtonClick);
 
-		function onButtonClick ()
-		{	
-			_.alert('Button Clicked');
+		// function onButtonClick ()
+		// {	
+		// 	_.alert('Button Clicked');
 			
-			button.off('click', onButtonClick);
-		}
+		// 	button.off('click', onButtonClick);
+		// }
+
+		_.post('/ajax.php', {foo: 'bar', bar: 'foo'}, function (success)
+		{
+			console.log(success);
+
+		}, function (failure)
+		{
+			console.log(failure);
+		});
 
 	</script>
 </body>
