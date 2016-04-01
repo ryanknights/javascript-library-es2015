@@ -2,46 +2,58 @@
 
 const ajaxMethods =
 {
-	post (url, data, success, failure)
-	{
-		let request = new XMLHttpRequest(),
-			params  = [];
-
-		for (let key in data)
+	ajax (type, url, data)
+	{	
+		return new Promise((resolve, reject) =>
 		{
-			params.push(`${key}=${data[key]}`);
-		}
+			let request = new XMLHttpRequest(),
+				params  = '';
 
-		params = params.join('&');
-
-		request.open('POST', url, true);
-
-		request.onreadystatechange = function ()
-		{
-			if (this.readyState === 4)
+			if (data !== undefined)
 			{	
-				if (this.status === 200)
+				params = [];
+
+				for (let key in data)
 				{
-					if (typeof success === 'function')
-					{
-						success.call(this, JSON.parse(this.responseText));
-					}
+					params.push(`${key}=${data[key]}`);
 				}
-				else
-				{
-					if (typeof failure === 'function')
+
+				params = params.join('&');
+			}
+
+			request.open(type, url, true);
+
+			request.onreadystatechange = function ()
+			{
+				if (this.readyState === 4)
+				{	
+					if (this.status === 200)
 					{
-						failure.call(this, this.statusText);
+						resolve(JSON.parse(this.responseText));
+					}
+					else
+					{
+						reject(Error(this.statusText));
 					}
 				}
 			}
-		}
 
-		request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-		request.send(params);
+			request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+			request.send(params);
 
-		request = null;
-	}
+			request = null;
+		});
+	},
+
+	post (url, data)
+	{
+		return this.ajax('POST', url, data);
+	},
+
+	get (url, data, success, failure)
+	{
+		return this.ajax('GET', url, null);
+	}	
 }
 
 export { ajaxMethods };

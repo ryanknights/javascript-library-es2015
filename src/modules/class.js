@@ -4,51 +4,21 @@ const classMethods =
 {
 	addClass (className)
 	{
-		this.each((el) =>
-		{
-			if (el.classList)
-			{
-				el.classList.add(className);
-			}
-			else
-			{
-				el.className += ' ' + className;
-			}
-		});
+		this.each(el => el.classList.add(className));
 
 		return this;
 	},
 
 	removeClass (className)
 	{	
-		this.each((el) =>
-		{
-			if (el.classList)
-			{
-				el.classList.remove(className);
-			}
-			else
-			{
-				el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-			}
-		});
+		this.each(el => el.classList.remove(className));
 
 		return this;
 	},
 
 	hasClass (className)
 	{	
-		return this.el.some((el) =>
-		{
-			if (el.classList)
-			{
-				return el.classList.contains(className);
-			}
-			else
-			{
-				return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);	
-			}	
-		});
+		return this.el.some(el => el.classList.contains(className));
 	},
 
 	toggleClass (className)

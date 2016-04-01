@@ -4,37 +4,14 @@ const eventMethods =
 {
 	on (eventName, fn)
 	{	
-		this.each((el) =>
-		{
-			if (el.addEventListener)
-			{
-				el.addEventListener(eventName, fn);
-			}
-			else
-			{
-				el.attachEvent('on' + eventName, () =>
-				{
-					fn.call(el);
-				});
-			}
-		});
+		this.each(el => el.addEventListener(eventName, fn));
 
 		return this;
 	},
 
 	off (eventName, fn)
 	{
-		this.each((el) =>
-		{
-			if (el.removeEventListener)
-			{
-				el.removeEventListener(eventName, fn);
-			}
-			else
-			{
-				el.detachEvent('on' + eventName, fn);
-			}
-		});
+		this.each(el => el.removeEventListener(eventName, fn));
 
 		return this;
 	}

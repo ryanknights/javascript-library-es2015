@@ -1,11 +1,27 @@
 <?php
-	$result = [];
-
-	foreach ($_POST as $key => $value)
+	if ($_SERVER['REQUEST_METHOD'] === 'POST')
 	{
-		$result[$key] = $value;
+		$result = ['post' => true];
+
+		foreach ($_POST as $key => $value)
+		{
+			$result[$key] = $value;
+		}
+
+		echo json_encode($result);
+		exit;
 	}
 
-	echo json_encode($_POST);
-	exit;
+	if ($_SERVER['REQUEST_METHOD'] === 'GET')
+	{
+		$result = ['get' => true];
+
+		foreach ($_GET as $key => $value)
+		{
+			$result[$key] = $value;
+		}
+
+		echo json_encode($result);
+		exit;		
+	}
 ?>
